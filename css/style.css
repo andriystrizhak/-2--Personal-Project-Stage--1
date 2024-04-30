@@ -13,7 +13,7 @@ header {
 }
 
 .task-board-logo {
-    padding: 20px 20px;
+    padding: 50px 100px 15px 100px;
 }
 
 #logo-text, #mini-logo {
@@ -40,10 +40,11 @@ body {
 }
 
 .container {
+    font-size: 22px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    grid-gap: 30px;
-    margin: 20px;
+    grid-gap: 40px;
+    margin: 20px 100px;
     justify-items: center; /* Center items horizontally */
     align-items: center; /* Center items vertically */
 }
@@ -52,6 +53,7 @@ body {
     background-color: white;
     width: 100%;
     height: 100%;
+    min-width: 250px;
     color: black;
     text-align: center;
 }
@@ -65,12 +67,13 @@ body {
     margin-bottom: 10px;
 }
 
+/* Column info */
 .col-info {
-    padding: 5px;
+    padding: 10px;
     align-items: center;
     display: flex;
-    border-top: 3px solid #E4E6EB;
-    border-bottom: 3px solid #E4E6EB;
+    border-top: 2px solid #E4E6EB;
+    border-bottom: 2px solid #E4E6EB;
 }
 
 .col-name {
@@ -103,14 +106,17 @@ body {
     background-color: #f1f1f3;
 }
 
+/* Add task */
 .add-task-button {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
     align-items: center;
     background-color: white;
     cursor: pointer;
-    border: 3px dashed #E4E6EB;
-    border-radius: 10px;
+    border: 2px dashed #DCDDE3  ;
+    border-radius: 15px;
+    font-size: 22px;
 }
 
 .add-task-button:hover {
@@ -121,9 +127,111 @@ body {
     content: "+ Add new card";
 }
 
+/* Task list */
+.task {
+    list-style: none;
+    
+    padding: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    border: 2px solid #DCDDE3;
+    border-radius: 15px;
+}
 
+.task-name-button {
+    width: 100%;
+    padding: 5px;
+    align-items: center;
+    display: flex;
+}
 
+.task-name {
+    margin-right: auto;
+}
 
+.task-button {
+    width: 2rem;
+    height: 2rem;
+    margin-left: auto; /* Move the button to the right */
+    margin-right: 0;
+    font-size: 22px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: 50%;
+    padding: 5px;
+}
 
+.task-button:hover {
+    background-color: #f1f1f3;
+}
 
+.task-description {
+    text-align: left;
+    padding: 0 15px 5px 5px;
+    line-height: 1;
+    padding-top: 0;
+}
 
+.description-text {
+    font-size: 16px;
+    color: #9A9EAF;
+}
+
+.task-time-and-ico {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 5px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.task-time {
+    font-size: 19px;
+    color: #6A738A;
+}
+
+.task-time::before {
+    content: "🗓️";
+    font-size: 24px;
+    margin-right: 5px;
+    /* Або додати іконку */
+}
+
+.task-priority {
+    background-color: #F0F0F5;
+    border-radius: 2em;
+    font-size: 19px;
+    color: #6A738A;
+    width: fit-content;
+    padding: 5px 13px 8px 13px;
+    margin: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.task-priority > span {
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.task-priority::before {
+    /* Або додати іконку крапки */
+}
+
+.moveto {
+    margin: 5px;
+}
+
+.moveto-select {
+    width: 100%;
+    padding: 10px;
+    padding-top: 7px;
+    background-color: #E1E1E6;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    appearance: none;
+}
