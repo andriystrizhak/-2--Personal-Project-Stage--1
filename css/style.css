@@ -3,13 +3,51 @@
     padding: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: 600;
+    font-size: 22px;
+
     box-sizing: border-box;
+}
+
+/* Span styles */
+.lvl-2-text {
+    font-size: 22px;
+}
+
+.lvl-2-grey-text {
+    font-size: 19px;
+    color: #6A738A;
+}
+
+.lvl-3-text {
+    font-size: 19px;
+}
+
+.description-text {
+    font-size: 16px;
+    color: #9A9EAF;
+}
+
+.priority-marks {
+    font-size: 12px;
+    margin-right: 5px;
+}
+
+.priority-text {
+    font-size: 19px;
+    color: #6A738A;
+}
+
+
+/* Button styles */
+button:hover {
+    background-color: #f8f8fb;
 }
 
 /* Header */
 header {
     background: #fff;
     display: flex;
+    align-items: center;
 }
 
 .task-board-logo {
@@ -21,6 +59,7 @@ header {
     display: inline;
     vertical-align: middle; 
     font-weight: 700;
+    font-size: 30px;
 }
 
 #mini-logo {
@@ -28,6 +67,24 @@ header {
     height: 30px;
     margin-top: 0px;
     margin-left: 0px;
+}
+
+.history-button {
+    margin-left: auto;
+    margin-right: 100px;
+    margin-top: 35px;
+    padding: 9px 15px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #EBEDF2;
+    border-radius: 5px;
+}
+
+.history-icon {
+    width: 1.2em;
+    vertical-align: middle; 
+    position: relative;
+    top: -2px;
 }
 
 /* Container */
@@ -40,7 +97,6 @@ body {
 }
 
 .container {
-    font-size: 22px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 40px;
@@ -81,7 +137,9 @@ body {
 }
 
 .spacer {
-    flex-grow: 1; /* Порожній блок розтягується, заповнюючи вільне просторівство між елементами */
+    flex-grow: 1; 
+    /* Порожній блок розтягується, 
+    заповнюючи вільне просторівство між елементами */
 }
 
 .tasks-amount {
@@ -94,7 +152,7 @@ body {
     height: 2rem;
     margin-left: auto; /* Move the button to the right */
     margin-right: 0;
-    font-size: 22px;
+
     border: none;
     background: none;
     cursor: pointer;
@@ -116,11 +174,6 @@ body {
     cursor: pointer;
     border: 2px dashed #DCDDE3  ;
     border-radius: 15px;
-    font-size: 22px;
-}
-
-.add-task-button:hover {
-    background-color: #f7f7fa;
 }
 
 .add-task-content::before {
@@ -154,7 +207,6 @@ body {
     height: 2rem;
     margin-left: auto; /* Move the button to the right */
     margin-right: 0;
-    font-size: 22px;
     border: none;
     background: none;
     cursor: pointer;
@@ -173,52 +225,30 @@ body {
     padding-top: 0;
 }
 
-.description-text {
-    font-size: 16px;
-    color: #9A9EAF;
-}
-
 .task-time-and-ico {
     display: flex;
     align-items: center;
     width: 100%;
     padding: 10px 5px;
-    font-weight: 700;
     margin-bottom: 10px;
-}
-
-.task-time {
-    font-size: 19px;
-    color: #6A738A;
 }
 
 .task-time::before {
     content: "🗓️";
     font-size: 24px;
-    margin-right: 5px;
+    margin-right: 3px;
     /* Або додати іконку */
 }
 
 .task-priority {
     background-color: #F0F0F5;
     border-radius: 2em;
-    font-size: 19px;
-    color: #6A738A;
     width: fit-content;
-    padding: 5px 13px 8px 13px;
+    padding: 5px 14px 6px 11px;
     margin: 5px;
     margin-bottom: 20px;
     display: flex;
     align-items: center;
-}
-
-.task-priority > span {
-    font-size: 12px;
-    margin-right: 5px;
-}
-
-.task-priority::before {
-    /* Або додати іконку крапки */
 }
 
 .moveto {
@@ -229,6 +259,7 @@ body {
     width: 100%;
     padding: 10px;
     padding-top: 7px;
+    font-size: 19px;
     background-color: #E1E1E6;
     border: none;
     border-radius: 5px;

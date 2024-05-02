@@ -11,6 +11,11 @@
             <h2 id="logo-text">My Task Board </h2>
             <img id="mini-logo" src="img/mini-logo.png" alt="done-logo" >
         </div>
+
+        <button class="history-button">
+            <img src="img/history-ico.png" alt="history-icon" class="history-icon">
+            <span class="lvl-2-text-text">History</span>
+        </button>
     </header>
 
     <main>
@@ -42,18 +47,28 @@
         <div class="container">
             <div id="todo-col" class="col">
                 <div class="col-info">
-                    <div class="col-name">To Do</div>
+                    <div class="col-name">
+                        <span class="lvl-2-text">To Do</span>
+                    </div>
                     <div class="spacer"></div>
-                    <div class="tasks-amount">45</div>
+                    <div class="tasks-amount">
+                        <span class="lvl-3-text">45</span>
+                    </div>
                     <button class="col-info-button">&#x2630;</button>
                 </div>
+
                 <button class="add-task-button">
-                    <div class="add-task-content"></div>
+                    <span class="lvl-2-text">
+                        <div class="add-task-content"></div>
+                    </span>
                 </button>
+
                 <ul class="task-list">
                     <li class="task">
                         <div class="task-name-button">
-                            <div class="task-name">Task 1</div>
+                            <div class="task-name">
+                                <span class="lvl-2-text">Task 1</span>
+                            </div>
                             <button class="task-button">&#x2630;</button>        
                         </div>
                         <div class="task-description">
@@ -65,14 +80,19 @@
                             </span>
                         </div>
                         <div class="task-time-and-ico">
-                            <div class="task-time">Wed, 19 Apr</div>
+                            <div class="task-time">
+                                <span class="lvl-2-grey-text">Wed, 19 Apr</span>
+                            </div>
                         </div>
                         <div class="task-priority">
-                            <span>🟡</span>Medium
+                            <span class="priority-marks">🟡</span>
+                            <span class="priority-text">Medium</span>
                         </div>
                         <div class="moveto">
                             <select class="moveto-select">
-                                <option value="moveto" selected disabled>Move to:</option>
+                                <option value="moveto" selected disabled>
+                                    <span class="lvl-3-text">Move to:</span>
+                                </option>
                             </select>    
                         </div>
                     </li>
@@ -81,18 +101,28 @@
     
             <div id="planned-col" class="col">
                 <div class="col-info">
-                    <div class="col-name">Planned</div>
+                    <div class="col-name">
+                        <span class="lvl-2-text">Planned</span>
+                    </div>
                     <div class="spacer"></div>
-                    <div class="tasks-amount">12</div>
+                    <div class="tasks-amount">
+                        <span class="lvl-3-text">12</span>
+                    </div>
                     <button class="col-info-button">&#x2630;</button>
                 </div>
+
                 <button class="add-task-button">
-                    <div class="add-task-content"></div>
+                    <span class="lvl-2-text">
+                        <div class="add-task-content"></div>
+                    </span>
                 </button>
+
                 <ul class="task-list">
                     <li class="task">
                         <div class="task-name-button">
-                            <div class="task-name">Task 12</div>
+                            <div class="task-name">
+                                <span class="lvl-2-text">Task 12</span>
+                            </div>
                             <button class="task-button">&#x2630;</button>        
                         </div>
                         <div class="task-description">
@@ -103,14 +133,19 @@
                             </span>
                         </div>
                         <div class="task-time-and-ico">
-                            <div class="task-time">Wed, 14 Apr</div>
+                            <div class="task-time">
+                                <span class="lvl-2-grey-text">Wed, 14 Apr</span>
+                            </div>
                         </div>
                         <div class="task-priority">
-                            <span>🟢</span>Low
+                            <span class="priority-marks">🟢</span>
+                            <span class="priority-text">Low</span>
                         </div>
                         <div class="moveto">
                             <select class="moveto-select">
-                                <option value="moveto" selected disabled>Move to:</option>
+                                <option value="moveto" selected disabled>
+                                    <span class="lvl-3-text">Move to:</span>
+                                </option>
                             </select>    
                         </div>
                     </li>
@@ -119,30 +154,50 @@
     
             <div id="in-progress-col" class="col">
                 <div class="col-info">
-                    <div class="col-name">In Progress</div>
+                    <div class="col-name">
+                        <span class="lvl-2-text">In progress</span>
+                    </div>
                     <div class="spacer"></div>
-                    <div class="tasks-amount">4</div>
+                    <div class="tasks-amount">
+                        <span class="lvl-3-text">4</span>
+                    </div>
                     <button class="col-info-button">&#x2630;</button>
                 </div>
+
                 <button class="add-task-button">
-                    <div class="add-task-content"></div>
+                    <span class="lvl-2-text">
+                        <div class="add-task-content"></div>
+                    </span>
                 </button>
+
+                <ul class="task-list">
+                </ul>
             </div>
     
             <div id="closed-col" class="col">
                 <div class="col-info">
-                    <div class="col-name">Closed</div>
+                    <div class="col-name">
+                        <span class="lvl-2-text">Closed</span>
+                    </div>
                     <div class="spacer"></div>
-                    <div class="tasks-amount">18</div>
+                    <div class="tasks-amount">
+                        <span class="lvl-3-text">18</span>
+                    </div>
                     <button class="col-info-button">&#x2630;</button>
                 </div>
+
                 <button class="add-task-button">
-                    <div class="add-task-content"></div>
+                    <span class="lvl-2-text">
+                        <div class="add-task-content"></div>
+                    </span>
                 </button>
+
                 <ul class="task-list">
                     <li class="task">
                         <div class="task-name-button">
-                            <div class="task-name">Task 1</div>
+                            <div class="task-name">
+                                <span class="lvl-2-text">Task 17</span>
+                            </div>
                             <button class="task-button">&#x2630;</button>        
                         </div>
                         <div class="task-description">
@@ -152,21 +207,28 @@
                             </span>
                         </div>
                         <div class="task-time-and-ico">
-                            <div class="task-time">Wed, 1 Apr</div>
+                            <div class="task-time">
+                                <span class="lvl-2-grey-text">Wed, 1 Apr</span>
+                            </div>
                         </div>
                         <div class="task-priority">
-                            <span>🔴</span>Hight
+                            <span class="priority-marks">🔴</span>
+                            <span class="priority-text">Hight</span>
                         </div>
                         <div class="moveto">
                             <select class="moveto-select">
-                                <option value="moveto" selected disabled>Move to:</option>
+                                <option value="moveto" selected disabled>
+                                    <span class="lvl-3-text">Move to:</span>
+                                </option>
                             </select>    
                         </div>
                     </li>
 
                     <li class="task">
                         <div class="task-name-button">
-                            <div class="task-name">Task 1</div>
+                            <div class="task-name">
+                                <span class="lvl-2-text">Task 4</span>
+                            </div>
                             <button class="task-button">&#x2630;</button>        
                         </div>
                         <div class="task-description">
@@ -179,14 +241,19 @@
                             </span>
                         </div>
                         <div class="task-time-and-ico">
-                            <div class="task-time">Wed, 1 Apr</div>
+                            <div class="task-time">
+                                <span class="lvl-2-grey-text">Wed, 1 Apr</span>
+                            </div>
                         </div>
                         <div class="task-priority">
-                            <span>🟡</span>Medium
+                            <span class="priority-marks">🟡</span>
+                            <span class="priority-text">Medium</span>
                         </div>
                         <div class="moveto">
                             <select class="moveto-select">
-                                <option value="moveto" selected disabled>Move to:</option>
+                                <option value="moveto" selected disabled>
+                                    <span class="lvl-3-text">Move to:</span>
+                                </option>
                             </select>    
                         </div>
                     </li>
@@ -196,5 +263,7 @@
         </div>
 
     </main>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
