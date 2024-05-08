@@ -22,12 +22,12 @@ function addTask(event) {
         if (taskList) {
             // Створити рядок HTML з необхідним елементом списку
             var taskHTML = `
-                <li class="task">
+                <li class="task sh-col-item">
                     <div class="task-name-button">
                         <div class="task-name">
                             <span class="lvl-2-text">${taskName}</span>
                         </div>
-                        <button class="task-button">&#x2630;</button>        
+                        <button class="task-button small-circle-button">&#x2630;</button>        
                     </div>
                     <div class="task-description">
                         <span class="description-text">
@@ -64,4 +64,6 @@ var addTaskButtons = document.querySelectorAll('.add-task-button');
 addTaskButtons.forEach(function(button) {
     button.addEventListener('click', addTask);
 });
+
+
 
