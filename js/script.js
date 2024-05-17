@@ -66,4 +66,35 @@ addTaskButtons.forEach(function(button) {
 });
 
 
+document.addEventListener("DOMContentLoaded", function() {
+    var colInfoButtons = document.querySelectorAll(".col-info-button");
+
+    colInfoButtons.forEach(function(button) {
+        button.addEventListener("click", function(event) {
+            event.stopPropagation(); // Зупиняємо спливання події, щоб не викликати обробник на document.click
+            var contextMenu = document.querySelector(".context-menu");
+            if (!contextMenu) return;
+
+            var rect = button.getBoundingClientRect();
+            var x = rect.left + window.scrollX;
+            var y = rect.top + window.scrollY + button.offsetHeight;
+
+            toggleContextMenu(contextMenu, x, y);
+        });
+    });
+
+    function toggleContextMenu(contextMenu, x, y) {
+        contextMenu.style.display = "block";
+        contextMenu.style.left = x + "px";
+        contextMenu.style.top = y + "px";
+
+        // Закриваємо меню при кліку поза ним
+        document.addEventListener("click", function closeContextMenu() {
+            contextMenu.style.display = "none";
+            document.removeEventListener("click", closeContextMenu);
+        }, { once: true });
+    }
+});
+
+
 
