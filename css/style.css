@@ -214,9 +214,17 @@ main {
     padding-bottom: 5px;
     z-index: 100000;
 
-    transition: display 0.5s ease;
+    opacity: 0; /* Початкова прозорість 0 */
+    transition: opacity 0.2s ease;
     box-shadow: -5px -5px 5px #fff,
     5px 5px 5px #dee1e8;
+}
+
+
+.context-menu.show {
+    display: block;
+    opacity: 1; /* Прозорість 1 при показі */
+    visibility: visible; /* Відображаємо меню */
 }
 
 .context-menu-item {
@@ -224,11 +232,15 @@ main {
     cursor: pointer;
     padding: 5px 10px;
     margin-bottom: 5px;
-    font-size: 18px;
     text-align: left;
     display: flex;
     align-items: center;
 }
+
+.context-menu-item span {
+    font-size: 18px;
+}
+
 
 .context-menu-item:hover {
     background-color: #f0f0f0;

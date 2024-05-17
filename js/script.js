@@ -71,28 +71,78 @@ document.addEventListener("DOMContentLoaded", function() {
 
     colInfoButtons.forEach(function(button) {
         button.addEventListener("click", function(event) {
-            event.stopPropagation(); // Зупиняємо спливання події, щоб не викликати обробник на document.click
+            event.stopPropagation();
             var contextMenu = document.querySelector(".context-menu");
-            if (!contextMenu) return;
+            
+            if (!contextMenu) {
+                contextMenu = createContextMenu();
+                document.body.appendChild(contextMenu);
+            }
 
             var rect = button.getBoundingClientRect();
             var x = rect.left + window.scrollX;
             var y = rect.top + window.scrollY + button.offsetHeight;
 
-            toggleContextMenu(contextMenu, x, y);
+            if (contextMenu.classList.contains("show")) {
+                hideContextMenu(contextMenu);
+            } else {
+                showContextMenu(contextMenu, x, y);
+            }
         });
     });
 
-    function toggleContextMenu(contextMenu, x, y) {
-        contextMenu.style.display = "block";
+    function createContextMenu() {
+        var menu = document.createElement("div");
+        menu.className = "context-menu";
+
+        var editItem = document.createElement("div");
+        editItem.className = "context-menu-item";
+        editItem.id = "edit-cm-item";
+        var editItemIco = document.createElement("img");
+        editItemIco.src = "img/edit-ico.png";
+        editItemIco.alt = "edit-icon";
+        editItemIco.className = "context-menu-icon";
+        var editItemSpan = document.createElement("span");
+        editItemSpan.textContent = "Редагувати";
+        editItem.appendChild(editItemIco);
+        editItem.appendChild(editItemSpan);
+
+        var deleteItem = document.createElement("div");
+        deleteItem.className = "context-menu-item";
+        deleteItem.id = "delete-cm-item";
+        var deleteItemIco = document.createElement("img");
+        deleteItemIco.src = "img/delete-ico.png";
+        deleteItemIco.alt = "delete-icon";
+        deleteItemIco.className = "context-menu-icon";
+        var deleteItemSpan = document.createElement("span");
+        deleteItemSpan.textContent = "Видалити";
+        deleteItem.appendChild(deleteItemIco);
+        deleteItem.appendChild(deleteItemSpan);
+
+        menu.appendChild(editItem);
+        menu.appendChild(deleteItem);
+        return menu;
+    }
+
+    function showContextMenu(contextMenu, x, y) {
         contextMenu.style.left = x + "px";
         contextMenu.style.top = y + "px";
+        contextMenu.style.display = "block";
+        setTimeout(() => {
+            contextMenu.classList.add("show");
+        }, 10);
 
-        // Закриваємо меню при кліку поза ним
         document.addEventListener("click", function closeContextMenu() {
-            contextMenu.style.display = "none";
+            hideContextMenu(contextMenu);
             document.removeEventListener("click", closeContextMenu);
         }, { once: true });
+    }
+
+    function hideContextMenu(contextMenu) {
+        contextMenu.classList.remove("show");
+        setTimeout(() => {
+            contextMenu.style.display = "none";
+        }, 300);
     }
 });
 
