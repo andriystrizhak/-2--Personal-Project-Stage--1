@@ -210,14 +210,17 @@ main {
     background-color: #fcfcfc;
     border: 1px solid #DCDDE3;
     border-radius: 15px;    
-    padding: 10px;
-    padding-bottom: 5px;
+    padding: 8px;
+    padding-bottom: 4px;
     z-index: 100000;
 
     opacity: 0; /* Початкова прозорість 0 */
-    transition: opacity 0.2s ease;
     box-shadow: -5px -5px 5px #fff,
     5px 5px 5px #dee1e8;
+
+    transition: box-shadow 0.5s ease,
+    opacity 0.2s ease,
+    transform 0.5s ease;
 }
 
 
@@ -225,13 +228,14 @@ main {
     display: block;
     opacity: 1; /* Прозорість 1 при показі */
     visibility: visible; /* Відображаємо меню */
+    transform: skew(-1deg, 1deg);
 }
 
 .context-menu-item {
-    border-radius: 10px;    
+    border-radius: 7px;    
     cursor: pointer;
-    padding: 5px 10px;
-    margin-bottom: 5px;
+    padding: 4px 8px;
+    margin-bottom: 4px;
     text-align: left;
     display: flex;
     align-items: center;
@@ -240,7 +244,6 @@ main {
 .context-menu-item span {
     font-size: 18px;
 }
-
 
 .context-menu-item:hover {
     background-color: #f0f0f0;
@@ -276,6 +279,7 @@ main {
 .task {
     list-style: none;
     
+    align-items: stretch;
     padding: 10px;
     margin-bottom: 10px;
     align-items: center;
