@@ -1,173 +1,63 @@
-const taskName = "*Task Name Placeholder*";
-const taskList = document.getElementById(".task-list");
-
-// Remove task
-document.addEventListener("click", function(event) {
-    if (event.target.classList.contains("task-button")) {
-        event.target.closest(".task").remove();
-    }
-});
-
-// Add new task
-document.addEventListener('DOMContentLoaded', function() {
-    var addTaskButtons = document.querySelectorAll('.add-task-button');
-
-    addTaskButtons.forEach(function(button) {
-        button.addEventListener("click", addTask);
-    });
-});
-
-function addTask(event) {
-    event.stopPropagation();
-    // Отримати батьківський елемент колонки
-    var column = event.target.closest('.col');
-    // Перевірити, чи знайдено колонку
-    if (column) {
-        // Знайти список в цій колонці
-        var taskList = column.querySelector('.task-list');
-        // Перевірити, чи знайдено список
-        if (taskList) {
-            // Створити рядок HTML з необхідним елементом списку
-            var taskHTML = `
-                <li class="task sh-col-item">
-                    <div class="task-name-button">
-                        <div class="task-name">
-                            <span class="lvl-2-text">Новое завдання</span>
-                        </div>
-                        <button class="task-button small-circle-button">&#x2630;</button>
-                    </div>
-                    <div class="task-description">
-                        <span class="description-text">
-                            *add some description*
-                        </span>
-                    </div>
-                    <div class="task-time-and-ico">
-                        <div class="task-time">
-                            <span class="lvl-2-grey-text">*add date*</span>
-                        </div>
-                    </div>
-                    <div class="task-priority">
-                        <span class="priority-marks">🔵</span>
-                        <span class="priority-text">*not set*</span>
-                    </div>
-                    <div class="moveto">
-                        <select class="moveto-select">
-                            <option value="moveto" selected disabled>
-                                <span class="lvl-3-text">Move to:</span>
-                            </option>
-                        </select>
-                    </div>
-                </li>
-            `;
-            // Додати HTML до списку
-            taskList.innerHTML += taskHTML;
-        }
-    }
-}
-
-// Col context menu
 document.addEventListener("DOMContentLoaded", function() {
-    let currentColumn = null;
+    const taskName = "*Task Name Placeholder*";
 
-    // Додаємо обробники подій до кнопок колонки
-    var colInfoButtons = document.querySelectorAll(".col-info-button");
-
-    colInfoButtons.forEach(function(button) {
-        button.addEventListener("click", function(event) {
-            event.stopPropagation();
-            currentColumn = this.closest('.col');
-            var contextMenu = document.querySelector(".context-menu");
-
-            if (!contextMenu) {
-                contextMenu = createContextMenu();
-                document.body.appendChild(contextMenu);
-            }
-
-            var rect = button.getBoundingClientRect();
-            var x = rect.left + window.scrollX;
-            var y = rect.top + window.scrollY + button.offsetHeight;
-
-            if (contextMenu.classList.contains("show")) {
-                hideContextMenu(contextMenu);
-            } else {
-                showContextMenu(contextMenu, x, y);
-            }
-        });
-    });
-
-    function createContextMenu() {
-        var menu = document.createElement("div");
-        menu.className = "context-menu";
-
-        var editItem = document.createElement("div");
-        editItem.className = "context-menu-item";
-        editItem.id = "edit-cm-item";
-        var editItemIco = document.createElement("img");
-        editItemIco.src = "img/edit-ico.png";
-        editItemIco.alt = "edit-icon";
-        editItemIco.className = "context-menu-icon";
-        var editItemSpan = document.createElement("span");
-        editItemSpan.textContent = "Редагувати";
-        editItem.appendChild(editItemIco);
-        editItem.appendChild(editItemSpan);
-
-        var deleteItem = document.createElement("div");
-        deleteItem.className = "context-menu-item";
-        deleteItem.id = "delete-cm-item";
-        var deleteItemIco = document.createElement("img");
-        deleteItemIco.src = "img/delete-ico.png";
-        deleteItemIco.alt = "delete-icon";
-        deleteItemIco.className = "context-menu-icon";
-        var deleteItemSpan = document.createElement("span");
-        deleteItemSpan.textContent = "Видалити";
-        deleteItem.appendChild(deleteItemIco);
-        deleteItem.appendChild(deleteItemSpan);
-
-        menu.appendChild(editItem);
-        menu.appendChild(deleteItem);
-        return menu;
-    }
-
-    function showContextMenu(contextMenu, x, y) {
-        contextMenu.style.left = x + "px";
-        contextMenu.style.top = y + "px";
-        contextMenu.style.display = "block";
-        setTimeout(() => {
-            contextMenu.classList.add("show");
-        }, 10);
-
-        document.addEventListener("click", function closeContextMenu() {
-            hideContextMenu(contextMenu);
-            document.removeEventListener("click", closeContextMenu);
-        }, { once: true });
-    }
-
-    function hideContextMenu(contextMenu) {
-        contextMenu.classList.remove("show");
-        setTimeout(() => {
-            contextMenu.style.display = "none";
-        }, 300);
-    }
-
-    // Додаємо обробник події на документ для опції "Видалити"
+    // Remove task
     document.addEventListener("click", function(event) {
-        if (event.target.id === "delete-cm-item" || event.target.closest("#delete-cm-item")) {
-            event.stopPropagation();
-            if (currentColumn) {
-                currentColumn.remove();
-                currentColumn = null; // Reset current column
-            }
+        if (event.target.classList.contains("task-button")) {
+            event.target.closest(".task").remove();
         }
     });
-});
 
+    // Add new task
+    function addTask(event) {
+        event.stopPropagation();
+        // Отримати батьківський елемент колонки
+        var column = event.target.closest('.col');
+        // Перевірити, чи знайдено колонку
+        if (column) {
+            // Знайти список в цій колонці
+            var taskList = column.querySelector('.task-list');
+            // Перевірити, чи знайдено список
+            if (taskList) {
+                // Створити рядок HTML з необхідним елементом списку
+                var taskHTML = `
+                    <li class="task sh-col-item">
+                        <div class="task-name-button">
+                            <div class="task-name">
+                                <span class="lvl-2-text">${taskName}</span>
+                            </div>
+                            <button class="task-button small-circle-button">&#x2630;</button>
+                        </div>
+                        <div class="task-description">
+                            <span class="description-text">
+                                *add some description*
+                            </span>
+                        </div>
+                        <div class="task-time-and-ico">
+                            <div class="task-time">
+                                <span class="lvl-2-grey-text">*add date*</span>
+                            </div>
+                        </div>
+                        <div class="task-priority">
+                            <span class="priority-marks">🔵</span>
+                            <span class="priority-text">*not set*</span>
+                        </div>
+                        <div class="moveto">
+                            <select class="moveto-select">
+                                <option value="moveto" selected disabled>
+                                    <span class="lvl-3-text">Move to:</span>
+                                </option>
+                            </select>
+                        </div>
+                    </li>
+                `;
+                // Додати HTML до списку
+                taskList.innerHTML += taskHTML;
+            }
+        }
+    }
 
-
-
-// ADDING NEW COLUMN
-document.addEventListener("DOMContentLoaded", function() {
-
-    // Add "Add new column" block
+    // Reset "Add new column" block
     function resetAddColDiv(addColDiv) {
         addColDiv.innerHTML = `
             <div class="add-col">
@@ -182,7 +72,7 @@ document.addEventListener("DOMContentLoaded", function() {
         addColDiv.querySelector(".add-col-button").addEventListener("click", createNewColForm);
     }
 
-    // Show "Add new column form" 
+    // Show "Add new column form"
     function createNewColForm(event) {
         event.preventDefault();
         var addColDiv = document.getElementById("add-col");
@@ -193,14 +83,14 @@ document.addEventListener("DOMContentLoaded", function() {
             <input type="text" class="new-col-name-input" placeholder="Enter list name">
             <div class="new-col-buttons">
                 <button class="add-list-button">Додати список</button>
-                <button class="cancel-button">Скасувати</button>
+                <button class="cancel-list-button">Скасувати</button>
             </div>
         `;
 
         addColDiv.innerHTML = '';
         addColDiv.appendChild(newColForm);
 
-        newColForm.querySelector(".cancel-button").addEventListener("click", function(event) {
+        newColForm.querySelector(".cancel-list-button").addEventListener("click", function(event) {
             event.preventDefault();
             resetAddColDiv(addColDiv);
         });
@@ -239,7 +129,46 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-    // Col context menu
+    // Show "Edit column form"
+    function showEditColForm(column) {
+        var colName = column.querySelector('.col-name span').textContent;
+        var colInfo = column.querySelector('.col-info');
+        var addTaskButton = column.querySelector('.add-task-button');
+
+        var editColForm = document.createElement("div");
+        editColForm.className = "new-col-form";
+        editColForm.innerHTML = `
+            <input type="text" class="new-col-name-input" value="${colName}">
+            <div class="new-col-buttons">
+                <button class="save-list-button">Зберегти</button>
+                <button class="cancel-list-button">Скасувати</button>
+            </div>
+        `;
+
+        colInfo.style.display = 'none';
+        addTaskButton.style.display = 'none';
+        column.insertBefore(editColForm, column.firstChild);
+
+        editColForm.querySelector(".cancel-list-button").addEventListener("click", function(event) {
+            event.preventDefault();
+            column.removeChild(editColForm);
+            colInfo.style.display = '';
+            addTaskButton.style.display = '';
+        });
+
+        editColForm.querySelector(".save-list-button").addEventListener("click", function(event) {
+            event.preventDefault();
+            var newColName = editColForm.querySelector(".new-col-name-input").value;
+            if (newColName.trim() !== "") {
+                column.querySelector('.col-name span').textContent = newColName;
+                column.removeChild(editColForm);
+                colInfo.style.display = '';
+                addTaskButton.style.display = '';
+            }
+        });
+    }
+
+    // Attach handlers to column
     function attachColHandlers(col) {
         col.querySelector(".col-info-button").addEventListener("click", function(event) {
             event.stopPropagation();
@@ -266,7 +195,7 @@ document.addEventListener("DOMContentLoaded", function() {
         col.querySelector(".add-task-button").addEventListener("click", addTask);
     }
 
-    //
+    // Create context menu
     function createContextMenu() {
         var menu = document.createElement("div");
         menu.className = "context-menu";
@@ -300,6 +229,7 @@ document.addEventListener("DOMContentLoaded", function() {
         return menu;
     }
 
+    // Show context menu
     function showContextMenu(contextMenu, x, y, column) {
         contextMenu.style.left = x + "px";
         contextMenu.style.top = y + "px";
@@ -308,18 +238,35 @@ document.addEventListener("DOMContentLoaded", function() {
             contextMenu.classList.add("show");
         }, 10);
 
+        // Remove previous event listeners for edit item
+        var editItem = contextMenu.querySelector("#edit-cm-item");
+        var newEditItem = editItem.cloneNode(true);
+        editItem.parentNode.replaceChild(newEditItem, editItem);
+
+        newEditItem.addEventListener("click", function(event) {
+            event.stopPropagation();
+            showEditColForm(column);
+            hideContextMenu(contextMenu);
+        });
+
+        // Remove previous event listeners for delete item
+        var deleteItem = contextMenu.querySelector("#delete-cm-item");
+        var newDeleteItem = deleteItem.cloneNode(true);
+        deleteItem.parentNode.replaceChild(newDeleteItem, deleteItem);
+
+        newDeleteItem.addEventListener("click", function(event) {
+            event.stopPropagation();
+            column.remove();
+            hideContextMenu(contextMenu);
+        });
+
         document.addEventListener("click", function closeContextMenu() {
             hideContextMenu(contextMenu);
             document.removeEventListener("click", closeContextMenu);
         }, { once: true });
-
-        contextMenu.querySelector("#delete-cm-item").addEventListener("click", function(event) {
-            event.stopPropagation();
-            column.remove();
-            hideContextMenu(contextMenu);
-        }, { once: true });
     }
 
+    // Hide context menu
     function hideContextMenu(contextMenu) {
         contextMenu.classList.remove("show");
         setTimeout(() => {
